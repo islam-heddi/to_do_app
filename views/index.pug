@@ -1,0 +1,22 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title To Do app
+  link(rel='stylesheet' href='style.css')
+  link(rel='shortcut icon' href='./todo.bmp' type='image/x-icon')
+  link(rel='stylesheet' href='media.css')
+main
+  h1 To Do App
+  form(action="/add", method="POST")
+    input#mywork(type='text' name='work' value=post placeholder='Enter your work')
+    button(type="submit", value="Add") add
+  p#erorr Please add something before
+  h5 Your To Do List :
+  #result
+    each item in data
+        div.child#work
+            - id = item.id
+            p=item.work
+            form(action="/delete/" + id , method="POST")
+              button(type="submit") delete
