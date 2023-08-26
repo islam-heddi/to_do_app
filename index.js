@@ -23,11 +23,9 @@ app.get('/', (req,res) => {
 
 app.post('/add', (req,res) => {
     var work = req.body;
-    console.log(work.work);
     work = work.work;
     if(work == "") return res.redirect('/');
     const id = Math.floor(Math.random() * 1000);
-    console.log(id);
     listWork.push({
         id,
         work,
@@ -38,7 +36,6 @@ app.post('/add', (req,res) => {
 app.post('/delete/:id', (req,res) => {
     const id = req.params;
     const index = listWork.findIndex(post => post.id == id.id);
-    console.log("Delete process \n id : " + id.id + "\n index : " + index);
     listWork.splice(index, 1);
     return res.redirect('/');
 });
